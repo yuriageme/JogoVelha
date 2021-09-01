@@ -80,5 +80,24 @@ public class Tabuleiro {
 
   }
 
+  public void facil() {
+
+    boolean sair = false;
+
+    for(int i = 0; i < 3; i++) {
+      for(int j = 0; j < 3; j++) {
+        if(matriz[i][j] == '-') {
+          matriz[i][j] = 'o';
+          sair = true;
+          break;
+        }
+      }
+    if (sair == true){
+      break;
+    }
+    }
+ }
 }
+  
+
 
