@@ -137,14 +137,18 @@ Random Gerador = new Random();
         if((jogadaMaq==false)){
           if((matriz[0][0]=='x')&&(matriz[1][1]=='x')&&(matriz[2][2]=='-')){
             matriz[2][2] = 'o';
+            jogadaMaq = true;
           }else if((matriz[2][2]=='x')&&(matriz[1][1]=='x')&&(matriz[0][0]=='-')){
             matriz[0][0] = 'o';
+            jogadaMaq = true;
           }else if((matriz[2][0]=='x')&&(matriz[1][1]=='x')&&(matriz[0][2]=='-')){
             matriz[0][2] = 'o';
+            jogadaMaq = true;
           }else if((matriz[0][2]=='x')&&(matriz[1][1]=='x')&&(matriz[2][0]=='-')){
             matriz[2][0] = 'o';
+            jogadaMaq = true;
           }
-          jogadaMaq = true;
+          
         }
 
   }
