@@ -1,6 +1,12 @@
+import java.util.Random;
+
 public class Tabuleiro {
     
+Random Gerador = new Random();
+
     public char[][] matriz = new char [3][3];
+
+    public boolean jogadaMaq = false;
 
      //Insere caracteres nos espaços da matriz
      
@@ -80,23 +86,135 @@ public class Tabuleiro {
 
   }
 
-  public void facil() {
+  public void MaquinaChance(){
+   
+    jogadaMaq = false;
 
-    boolean sair = false;
-
-    for(int i = 0; i < 3; i++) {
-      for(int j = 0; j < 3; j++) {
-        if(matriz[i][j] == '-') {
-          matriz[i][j] = 'o';
-          sair = true;
+    //verifica se a máquina tem duas marcações consecutivas em uma linha 
+    for(int i =0; i<3; i++){
+      if((matriz[i][0]=='o')&&(matriz[i][1]=='o')&&(matriz[i][2]=='-')){
+        matriz[i][2] = 'o';
+        jogadaMaq = true;
+        break;  
+      }
+    }
+    //verifica se a máquina tem duas marcações consecutivas em uma coluna
+    if(jogadaMaq==false){
+      for (int j =0; j<3; j++){
+        if((matriz[0][j]=='o')&&(matriz[1][j]=='o')&&(matriz[2][j]=='-')){
+          matriz[2][j] = 'o';
+          jogadaMaq = true;
           break;
         }
       }
-    if (sair == true){
-      break;
     }
+
+  }
+
+  public void JogadorChance(){
+
+    jogadaMaq = false;
+
+    //verifica se o jogador tem duas marcações consecutivas em uma linha 
+       for(int i =0; i<3; i++){
+         if((matriz[i][0]=='x')&&(matriz[i][1]=='x')&&(matriz[i][2]=='-')){
+           matriz[i][2] = 'o';
+           jogadaMaq = true;
+           break;  
+         }
+       }
+    //verifica se o jogador tem duas marcações consecutivas em uma coluna
+        if(jogadaMaq==false){
+          for (int j =0; j<3; j++){
+            if((matriz[0][j]=='x')&&(matriz[1][j]=='x')&&(matriz[2][j]=='-')){
+              matriz[2][j] = 'o';
+              jogadaMaq = true;
+              break;
+            }
+          }
+        }
+    //verifica se o jogador tem duas marcações consecutivas na diagonal
+        if((jogadaMaq==false)){
+          if((matriz[0][0]=='x')&&(matriz[1][1]=='x')&&(matriz[2][2]=='-')){
+            matriz[2][2] = 'o';
+          }else if((matriz[2][2]=='x')&&(matriz[1][1]=='x')&&(matriz[0][0]=='-')){
+            matriz[0][0] = 'o';
+          }else if((matriz[2][0]=='x')&&(matriz[1][1]=='x')&&(matriz[0][2]=='-')){
+            matriz[0][2] = 'o';
+          }else if((matriz[0][2]=='x')&&(matriz[1][1]=='x')&&(matriz[2][0]=='-')){
+            matriz[2][0] = 'o';
+          }
+          jogadaMaq = true;
+        }
+
+  }
+
+  public void Aleatorio() {
+
+    jogadaMaq = false;
+
+    MaquinaChance();
+    
+    //Insere jogada da máquina na primeira casa disponível
+    if (jogadaMaq==false){
+      for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+          if(matriz[i][j] == '-') {
+            matriz[i][j] = 'o';
+            jogadaMaq = true;
+            break;
+          }
+        }
+      if (jogadaMaq == true){
+        break;
+      }
+      }
+
     }
- }
+  }
+  //função para modo jogador x pc no nível médio
+  public void MelhorJogada(){
+
+    jogadaMaq = false;
+
+    MaquinaChance();
+
+    JogadorChance();
+  
+  //execução do modo fácil
+    if(jogadaMaq==false){
+      Aleatorio();  
+    }
+  }
+
+  public void facil(){
+    
+        
+    if (Gerador.nextInt(100)<60){
+      Aleatorio();
+    }else{
+      MelhorJogada();
+    }
+  }
+
+  public void medio(){
+    
+    if (Gerador.nextInt(100)<40){
+      Aleatorio();
+    }else{
+      MelhorJogada();
+    }
+  }
+
+  public void dificil(){
+    
+    if (Gerador.nextInt(100)<20){
+      Aleatorio();
+    }else{
+      MelhorJogada();
+    }
+  }
+
 }
   
 

@@ -204,10 +204,13 @@ public class ModoJogo {
                 System.out.println("É a vez da máquina");
 
                 if (dificuldade == 1){
-
                     tab.facil();
-
-                        }
+                }else if (dificuldade == 2){
+                    tab.medio();
+                }
+                else if (dificuldade == 3){
+                    tab.dificil();
+                }
 
                 }
             
