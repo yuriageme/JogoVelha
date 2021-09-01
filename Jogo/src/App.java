@@ -11,9 +11,14 @@ public class App {
 
       partida.jogadorXjogador();
 
+     }else if (partida.modo == 2){
+
+      partida.jogadorXpc();
+ 
      }
-  }
+    }
 }
+
 
 
   
