@@ -50,11 +50,13 @@ public class ModoJogo {
         //Cria uma var booleana pra identificar se o jogo terminou
         boolean fimDeJogo = false;
         
+        
+        //Desenha o tabuleiro
+        tab.imprimeTabuleiro();
+        
         while(fimDeJogo == false) {
 
-            //Desenha o tabuleiro
-            tab.imprimeTabuleiro();
-
+            
             //Informa de quem é a vez
             if(jogada1) {
                 System.out.println("É a sua vez, " + p1 + "! Você joga com 'x'");
@@ -100,6 +102,9 @@ public class ModoJogo {
             
             //Definir a posição no tabuleiro na linha e coluna especificadas, na variável simbolo
             tab.Marcar(linha, coluna, simbolo);
+            
+            //Desenha o tabuleiro
+            tab.imprimeTabuleiro();
 
             //Verifica se algum jogador venceu a partida
             if(tab.jogadorVenceu() == 'x') {
@@ -151,11 +156,12 @@ public class ModoJogo {
         //Cria uma var booleana pra identificar se o jogo terminou
         boolean fimDeJogo = false;
         
+         //Desenha o tabuleiro
+         tab.imprimeTabuleiro();
+
         while(fimDeJogo == false) {
 
-            //Desenha o tabuleiro
-            tab.imprimeTabuleiro();
-
+            
             //Cria uma var que armazena 'x' ou 'y' de acordo com o jogador
             char simbolo = '-';
             if(jogada1) {
@@ -168,10 +174,13 @@ public class ModoJogo {
             int linha = 0;
             int coluna = 0;
 
+           
+
             //Informa de quem é a vez
             if(jogada1) {
                 System.out.println("É a sua vez, " + p1 + "! Você joga com 'x'");
-            
+
+                            
                 //Só avança se o usuário digitar uma opção válida
                 while(true) {
 
@@ -198,7 +207,9 @@ public class ModoJogo {
             
                 //Definir a posição no tabuleiro na linha e coluna especificadas, na variável simbolo
                 tab.Marcar(linha, coluna, simbolo);
-
+                
+                //Desenha o tabuleiro
+                tab.imprimeTabuleiro();
             
             } else {
                 System.out.println("É a vez da máquina");
@@ -211,7 +222,8 @@ public class ModoJogo {
                 else if (dificuldade == 3){
                     tab.dificil();
                 }
-
+                //Desenha o tabuleiro
+                tab.imprimeTabuleiro();
                 }
             
 
